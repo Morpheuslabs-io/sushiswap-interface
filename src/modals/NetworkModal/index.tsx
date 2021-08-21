@@ -67,6 +67,17 @@ export const SUPPORTED_NETWORKS: {
     rpcUrls: ['https://rpc-mainnet.maticvigil.com'], // ['https://matic-mainnet.chainstacklabs.com/'],
     blockExplorerUrls: ['https://explorer-mainnet.maticvigil.com'],
   },
+  [ChainId.MATIC_TESTNET]: {
+    chainId: '0x13881',
+    chainName: 'Matic Testnet',
+    nativeCurrency: {
+      name: 'Matic',
+      symbol: 'MATIC',
+      decimals: 18,
+    },
+    rpcUrls: ['https://rpc-mumbai.maticvigil.com'], // ['https://matic-mainnet.chainstacklabs.com/'],
+    blockExplorerUrls: ['https://mumbai.polygonscan.com'],
+  },
   [ChainId.HECO]: {
     chainId: '0x80',
     chainName: 'Heco',
@@ -181,6 +192,7 @@ export default function NetworkModal(): JSX.Element | null {
         {[
           ChainId.MAINNET,
           ChainId.MATIC,
+          ChainId.MATIC_TESTNET,
           ChainId.FANTOM,
           // ChainId.ARBITRUM,
           ChainId.OKEX,
@@ -218,6 +230,8 @@ export default function NetworkModal(): JSX.Element | null {
                 if (key === ChainId.MAINNET) {
                   library?.send('wallet_switchEthereumChain', [{ chainId: '0x1' }, account])
                 } else {
+                  console.log('params:', params)
+                  console.log('account:', account)
                   library?.send('wallet_addEthereumChain', [params, account])
                 }
               }}
