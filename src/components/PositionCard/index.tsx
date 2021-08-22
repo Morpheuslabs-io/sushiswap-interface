@@ -103,6 +103,25 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
                   '-'
                 )}
               </div>
+              <br />
+              <div className="flex justify-between">
+                <div>
+                  {i18n._(t`Total Pooled`)} {currency0.symbol}:
+                </div>
+                <div className="flex space-x-2 font-bold">
+                  <div>{pair?.reserveOf(pair.token0).toSignificant(6)}</div>
+                  <div className="text-secondary">{currency0.symbol}</div>
+                </div>
+              </div>
+              <div className="flex justify-between">
+                <div>
+                  {i18n._(t`Total Pooled`)} {currency1.symbol}:
+                </div>
+                <div className="flex space-x-2 font-bold">
+                  <div>{pair?.reserveOf(pair.token1).toSignificant(6)}</div>
+                  <div className="text-secondary">{currency1.symbol}</div>
+                </div>
+              </div>
             </div>
           </AutoColumn>
         </div>
