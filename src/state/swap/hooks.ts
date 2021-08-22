@@ -48,6 +48,7 @@ import useENS from '../../hooks/useENS'
 import { useLingui } from '@lingui/react'
 import useParsedQueryString from '../../hooks/useParsedQueryString'
 import useSwapSlippageTolerance from '../../hooks/useSwapSlippageTollerence'
+import { computeMaxEstimatedInputOutputAmount } from '../../functions/prices'
 
 export function useSwapState(): AppState['swap'] {
   return useAppSelector((state) => state.swap)
@@ -133,6 +134,8 @@ export function useDerivedSwapInfo(doArcher = false): {
   inputError?: string
   v2Trade: V2Trade<Currency, Currency, TradeType> | undefined
   allowedSlippage: Percent
+  maxAllowInputAmount: string | undefined
+  maxAllowOutputAmount: string | undefined
 } {
   const { i18n } = useLingui()
 
@@ -173,6 +176,8 @@ export function useDerivedSwapInfo(doArcher = false): {
   })
 
   const v2Trade = isExactIn ? bestTradeExactIn : bestTradeExactOut
+
+  const { maxAllowInputAmount, maxAllowOutputAmount } = computeMaxEstimatedInputOutputAmount(v2Trade ?? undefined)
 
   const currencyBalances = {
     [Field.INPUT]: relevantTokenBalances[0],
@@ -309,6 +314,8 @@ export function useDerivedSwapInfo(doArcher = false): {
     inputError,
     v2Trade: v2Trade ?? undefined,
     allowedSlippage,
+    maxAllowInputAmount,
+    maxAllowOutputAmount,
   }
 }
 

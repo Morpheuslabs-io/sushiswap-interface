@@ -82,3 +82,28 @@ export function warningSeverity(priceImpact: Percent | undefined): WarningSeveri
   }
   return 0
 }
+
+export function computeMaxEstimatedInputOutputAmount(trade?: Trade<Currency, Currency, TradeType> | null): {
+  maxAllowInputAmount: string | undefined
+  maxAllowOutputAmount: string | undefined
+} {
+  if (!trade) {
+    return {
+      maxAllowInputAmount: undefined,
+      maxAllowOutputAmount: undefined,
+    }
+  }
+
+  const pair = trade?.route.pairs[0]
+  const inputTokenReserve = Number(pair.reserveOf(pair.token1).toFixed(4))
+  const outputTokenReserve = Number(pair.reserveOf(pair.token0).toFixed(4))
+  const priceImpactMaxPercent = Number(BLOCKED_PRICE_IMPACT_NON_EXPERT.toFixed(0)) / 100
+
+  const maxAllowInputAmount = parseFloat(`${priceImpactMaxPercent * inputTokenReserve}`).toFixed(4)
+  const maxAllowOutputAmount = parseFloat(`${priceImpactMaxPercent * outputTokenReserve}`).toFixed(4)
+
+  return {
+    maxAllowInputAmount,
+    maxAllowOutputAmount,
+  }
+}

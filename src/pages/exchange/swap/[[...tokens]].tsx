@@ -556,6 +556,7 @@ export default function Swap() {
                     showInverted={showInverted}
                     setShowInverted={setShowInverted}
                     className="bg-dark-900"
+                    priceImpactSeverity={priceImpactSeverity}
                   />
                 </div>
               )}
