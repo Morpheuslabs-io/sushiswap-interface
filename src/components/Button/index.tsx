@@ -19,7 +19,7 @@ const FILLED = {
   gradient:
     'w-full text-high-emphesis bg-gradient-to-r from-blue to-pink opacity-80 hover:opacity-100 disabled:bg-opacity-80',
   gradient_2:
-    'btn-gradient-2 bg-gradient-to-r from-opaque-blue-2 to-opaque-pink-2 rounded-md	text-white font-medium disabled:from-dark-800 disabled:to-dark-800',
+    'w-full btn-gradient-2 bg-gradient-to-r from-opaque-blue-2 to-opaque-pink-2 rounded-md	text-white font-medium disabled:from-dark-800 disabled:to-dark-800',
 }
 
 const OUTLINED = {
@@ -32,7 +32,7 @@ const OUTLINED = {
   gradient:
     'border border-transparent border-gradient-r-blue-pink-dark-900 opacity-80 hover:opacity-100 disabled:bg-opacity-20',
   gradient_2:
-    'btn-gradient-2 bg-gradient-to-r from-opaque-blue-2 to-opaque-pink-2 rounded-md	text-white font-medium disabled:from-dark-800 disabled:to-dark-800',
+    'w-full btn-gradient-2 bg-gradient-to-r from-opaque-blue-2 to-opaque-pink-2 rounded-md	text-white font-medium disabled:from-dark-800 disabled:to-dark-800',
 }
 
 const EMPTY = {

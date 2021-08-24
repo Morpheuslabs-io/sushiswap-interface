@@ -650,6 +650,7 @@ export default function Swap() {
                   style={{
                     width: '100%',
                   }}
+                  color={'gradient_2'}
                   id="swap-button"
                   disabled={
                     !isValid || approvalState !== ApprovalState.APPROVED || (priceImpactSeverity > 3 && !isExpertMode)
@@ -679,6 +680,7 @@ export default function Swap() {
                   })
                 }
               }}
+              color={'gradient_2'}
               id="swap-button"
               disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError}
               error={isValid && priceImpactSeverity > 2 && !swapCallbackError}
