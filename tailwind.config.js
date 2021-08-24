@@ -62,6 +62,8 @@ module.exports = {
         primary: '#BFBFBF',
         secondary: '#7F7F7F',
         'high-emphesis': '#E3E3E3',
+        'opaque-blue-2': '#4f2bf8',
+        'opaque-pink-2': '#ac59ff',
       },
       lineHeight: {
         '48px': '48px',

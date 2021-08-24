@@ -7,7 +7,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useWalletModalToggle } from '../../state/application/hooks'
 
-export default function Web3Connect({ color = 'gray', size = 'sm', className = '', ...rest }: ButtonProps) {
+export default function Web3Connect({ color = 'gray', size = 'sm', className = '', text = '', ...rest }: ButtonProps) {
   const { i18n } = useLingui()
   const toggleWalletModal = useWalletModalToggle()
   const { error } = useWeb3React()
@@ -31,7 +31,7 @@ export default function Web3Connect({ color = 'gray', size = 'sm', className = '
       size={size}
       {...rest}
     >
-      {i18n._(t`Connect to a wallet`)}
+      {text === '' ? i18n._(t`Connect to a wallet`) : i18n._(t`${text}`)}
     </Button>
   )
 }
