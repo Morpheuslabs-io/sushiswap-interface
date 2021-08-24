@@ -457,7 +457,7 @@ export default function Add() {
                   {i18n._(t`Unsupported Asset`)}
                 </Button>
               ) : !account ? (
-                <Web3Connect size="lg" color="blue" className="w-full" />
+                <Web3Connect size="lg" color="gradient_2" className="w-full" />
               ) : (
                 (approvalA === ApprovalState.NOT_APPROVED ||
                   approvalA === ApprovalState.PENDING ||

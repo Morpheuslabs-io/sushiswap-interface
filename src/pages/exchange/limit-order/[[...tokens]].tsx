@@ -389,7 +389,7 @@ function LimitOrder() {
                 }
                 dismissable={false}
               />
-              <Button disabled={true} color={'gray'}>
+              <Button disabled={true} color={'gradient_2'}>
                 {i18n._(t`Limit Orders Disabled`)}
               </Button>
               {/*<LimitOrderButton color="gradient" className="font-bold" currency={currencies[Field.INPUT]} />*/}

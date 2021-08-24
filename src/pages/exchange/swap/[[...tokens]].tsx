@@ -450,7 +450,8 @@ export default function Swap() {
         tokens={importTokensNotInDefault}
         onConfirm={handleConfirmTokenWarning}
       />
-      <div className="p-4 space-y-4 rounded bg-dark-900 z-1">
+      <DoubleGlowShadow>
+        <div className="p-4 space-y-4 rounded bg-dark-900 z-1">
         <SwapHeader
           input={currencies[Field.INPUT]}
           output={currencies[Field.OUTPUT]}
@@ -598,9 +599,9 @@ export default function Swap() {
               {i18n._(t`Unsupported Asset`)}
             </Button>
           ) : !account ? (
-            <Web3Connect size="lg" color="gradient_blue_pink" className="w-full" text="Swap" />
+            <Web3Connect size="lg" color="gradient_2" className="w-full" />
           ) : showWrap ? (
-            <Button color="gradient" size="lg" disabled={Boolean(wrapInputError)} onClick={onWrap}>
+            <Button color="gradient_2" size="lg" disabled={Boolean(wrapInputError)} onClick={onWrap}>
               {wrapInputError ??
                 (wrapType === WrapType.WRAP
                   ? i18n._(t`Wrap`)
@@ -711,6 +712,7 @@ export default function Swap() {
           <UnsupportedCurrencyFooter show={swapIsUnsupported} currencies={[currencies.INPUT, currencies.OUTPUT]} />
         )}
       </div>
+      </DoubleGlowShadow>
     </Container>
   )
 }
