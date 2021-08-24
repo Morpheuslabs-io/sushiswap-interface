@@ -384,5 +384,6 @@
   "{0} Strategy": "",
   "{0} {1} per {2}": "",
   "{0} {sign} market rate": "",
-  "{0}/{1} Burned": ""
+  "{0}/{1} Burned": "",
+  "{text}": ""
 }

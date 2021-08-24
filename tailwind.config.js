@@ -62,6 +62,8 @@ module.exports = {
         primary: '#BFBFBF',
         secondary: '#7F7F7F',
         'high-emphesis': '#E3E3E3',
+        'opaque-blue-2': '#4f2bf8',
+        'opaque-pink-2': '#ac59ff',
       },
       lineHeight: {
         '48px': '48px',
@@ -156,6 +158,14 @@ module.exports = {
             'linear-gradient(to right, rgba(39, 176, 230, 0.2) 0%, rgba(250, 82, 160, 0.2) 100%) left bottom no-repeat',
           backgroundSize: '100% 1px',
         },
+        '.border-gradient': {
+          border: 'double 2px transparent',
+          borderRadius: '0.375rem',
+          backgroundImage:
+              'linear-gradient(to bottom, #202231, #202231), linear-gradient(to right, #4f2bf8, #ac59ff)',
+          backgroundOrigin: 'border-box',
+          backgroundClip: 'padding-box, border-box'
+        }
       })
     }),
   ],
