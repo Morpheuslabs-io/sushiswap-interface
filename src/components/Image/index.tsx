@@ -37,7 +37,7 @@ const Image = ({ src, width = undefined, height = undefined, layout = undefined,
     <div style={{ width, height }} className="overflow-hidden rounded">
       {useBlur ? (
         <NextImage
-          loader={loader}
+          // loader={loader}
           src={src}
           width={width}
           height={height}
@@ -48,7 +48,7 @@ const Image = ({ src, width = undefined, height = undefined, layout = undefined,
         />
       ) : (
         <NextImage
-          loader={loader}
+          // loader={loader}
           src={src}
           width={width}
           height={height}

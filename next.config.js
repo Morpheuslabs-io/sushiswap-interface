@@ -29,7 +29,13 @@ module.exports = withBundleAnalyzer(
       disable: process.env.NODE_ENV === 'development',
     },
     images: {
-      domains: ['assets.sushi.com', 'res.cloudinary.com', 'raw.githubusercontent.com', 'logos.covalenthq.com'],
+      domains: [
+        'assets.sushi.com',
+        'res.cloudinary.com',
+        'raw.githubusercontent.com',
+        'logos.covalenthq.com',
+        's2.coinmarketcap.com',
+      ],
     },
     reactStrictMode: true,
     async redirects() {
