@@ -56,6 +56,17 @@ export const SUPPORTED_NETWORKS: {
     rpcUrls: ['https://bsc-dataseed.binance.org'],
     blockExplorerUrls: ['https://bscscan.com'],
   },
+  [ChainId.BSC_TESTNET]: {
+    chainId: '0x61',
+    chainName: 'Binance Smart Chain Testnet',
+    nativeCurrency: {
+      name: 'Binance Coin',
+      symbol: 'BNB',
+      decimals: 18,
+    },
+    rpcUrls: ['https://data-seed-prebsc-2-s3.binance.org:8545/'],
+    blockExplorerUrls: ['https://testnet.bscscan.com'],
+  },
   [ChainId.MATIC]: {
     chainId: '0x89',
     chainName: 'Matic',
@@ -193,16 +204,17 @@ export default function NetworkModal(): JSX.Element | null {
           ChainId.MAINNET,
           ChainId.MATIC,
           ChainId.MATIC_TESTNET,
-          ChainId.FANTOM,
+          // ChainId.FANTOM,
           // ChainId.ARBITRUM,
-          ChainId.OKEX,
-          ChainId.HECO,
+          // ChainId.OKEX,
+          // ChainId.HECO,
           ChainId.BSC,
-          ChainId.XDAI,
-          ChainId.HARMONY,
-          ChainId.AVALANCHE,
-          ChainId.CELO,
-          ChainId.PALM,
+          ChainId.BSC_TESTNET,
+          // ChainId.XDAI,
+          // ChainId.HARMONY,
+          // ChainId.AVALANCHE,
+          // ChainId.CELO,
+          // ChainId.PALM,
         ].map((key: ChainId, i: number) => {
           if (chainId === key) {
             return (
