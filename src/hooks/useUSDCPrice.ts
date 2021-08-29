@@ -11,6 +11,13 @@ export const USDC = {
   [ChainId.ROPSTEN]: new Token(ChainId.ROPSTEN, '0x0D9C8723B343A8368BebE0B5E89273fF8D712e3C', 6, 'USDC', 'USD Coin'),
   [ChainId.KOVAN]: new Token(ChainId.KOVAN, '0xb7a4F3E9097C08dA09517b5aB877F7a917224ede', 6, 'USDC', 'USD Coin'),
   [ChainId.MATIC]: new Token(ChainId.MATIC, '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174', 6, 'USDC', 'USD Coin'),
+  [ChainId.MATIC_TESTNET]: new Token(
+    ChainId.MATIC,
+    '0xdA5289fCAAF71d52a80A254da614a192b693e977',
+    6,
+    'USDC',
+    'USD Coin'
+  ),
   [ChainId.FANTOM]: new Token(ChainId.FANTOM, '0x04068DA6C83AFCFA0e13ba15A6696662335D5B75', 6, 'USDC', 'USD Coin'),
   [ChainId.BSC]: new Token(ChainId.BSC, '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d', 18, 'USDC', 'USD Coin'),
   [ChainId.HARMONY]: new Token(ChainId.HARMONY, '0x985458E523dB3d53125813eD68c274899e9DfAb4', 6, 'USDC', 'USD Coin'),
@@ -26,6 +33,7 @@ const STABLECOIN_AMOUNT_OUT: { [chainId: number]: CurrencyAmount<Token> } = {
   [ChainId.ROPSTEN]: CurrencyAmount.fromRawAmount(USDC[ChainId.ROPSTEN], 100_000e6),
   [ChainId.KOVAN]: CurrencyAmount.fromRawAmount(USDC[ChainId.KOVAN], 100_000e6),
   [ChainId.MATIC]: CurrencyAmount.fromRawAmount(USDC[ChainId.MATIC], 100_000e6),
+  [ChainId.MATIC_TESTNET]: CurrencyAmount.fromRawAmount(USDC[ChainId.MATIC_TESTNET], 100_000e6),
   [ChainId.FANTOM]: CurrencyAmount.fromRawAmount(USDC[ChainId.FANTOM], 100_000e6),
   [ChainId.BSC]: CurrencyAmount.fromRawAmount(USDC[ChainId.BSC], 100_000e18),
   [ChainId.HARMONY]: CurrencyAmount.fromRawAmount(USDC[ChainId.HARMONY], 100_000e6),

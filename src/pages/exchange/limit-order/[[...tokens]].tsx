@@ -381,18 +381,18 @@ function LimitOrder() {
             </div>
 
             <div className="flex flex-col gap-3">
-              <Alert
+              {/* <Alert
                 type="information"
                 title="Upgrade Notice"
                 message={
                   'In order to incorporate more community filler bots the ability to add new limit orders is temporarily paused. Existing orders are unaffected and can be edited and cancelled at any time'
                 }
                 dismissable={false}
-              />
-              <Button disabled={true} color={'gradient_2'}>
+              /> */}
+              {/* <Button disabled={true} color={'gradient_2'}>
                 {i18n._(t`Limit Orders Disabled`)}
-              </Button>
-              {/*<LimitOrderButton color="gradient" className="font-bold" currency={currencies[Field.INPUT]} />*/}
+              </Button> */}
+              <LimitOrderButton color="gradient" className="font-bold" currency={currencies[Field.INPUT]} />
             </div>
           </div>
         </DoubleGlowShadow>
@@ -401,6 +401,6 @@ function LimitOrder() {
   )
 }
 
-LimitOrder.Guard = NetworkGuard([ChainId.MATIC])
+LimitOrder.Guard = NetworkGuard([ChainId.MATIC, ChainId.MATIC_TESTNET])
 
 export default LimitOrder
