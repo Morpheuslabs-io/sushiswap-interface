@@ -35,9 +35,13 @@ module.exports = withBundleAnalyzer(
         'raw.githubusercontent.com',
         'logos.covalenthq.com',
         's2.coinmarketcap.com',
+        'www.coingecko.com',
+        'gemini.com',
+        'ethereum-optimism.github.io',
+        'i.imgur.com',
       ],
     },
-    reactStrictMode: true,
+    reactStrictMode: false,
     async redirects() {
       return [
         {
