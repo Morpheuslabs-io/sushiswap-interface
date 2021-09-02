@@ -39,7 +39,7 @@ const features = {
     Feature.MIGRATE,
     Feature.ANALYTICS,
   ],
-  [ChainId.MATIC_TESTNET]: [Feature.AMM, Feature.LIQUIDITY_MINING],
+  [ChainId.MATIC_TESTNET]: [Feature.AMM, Feature.LIQUIDITY_MINING, Feature.STAKING],
   [ChainId.HARMONY]: [Feature.AMM, Feature.LIQUIDITY_MINING, Feature.ANALYTICS],
   [ChainId.HARMONY_TESTNET]: [Feature.AMM],
   [ChainId.AVALANCHE]: [Feature.AMM],
