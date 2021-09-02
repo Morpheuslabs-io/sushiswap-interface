@@ -16,6 +16,7 @@ import { request } from 'graphql-request'
 
 export const MINICHEF = {
   [ChainId.MATIC]: 'sushiswap/matic-minichef',
+  [ChainId.MATIC_TESTNET]: 'midotrung/minichefmumbai',
   [ChainId.XDAI]: 'matthewlilley/xdai-minichef',
   [ChainId.HARMONY]: 'sushiswap/harmony-minichef',
 }
@@ -32,6 +33,7 @@ export const masterChefV2 = async (query, chainId = ChainId.MAINNET, variables =
 
 export const MASTERCHEF_V1 = {
   [ChainId.MAINNET]: 'sushiswap/master-chef',
+  [ChainId.MATIC_TESTNET]: 'midotrung/masterchefmumbai',
 }
 
 export const masterChefV1 = async (query, chainId = ChainId.MAINNET, variables = undefined) =>

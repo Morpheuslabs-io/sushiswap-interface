@@ -1,5 +1,7 @@
 import gql from 'graphql-tag'
 
+const MASTERCHEF_ADDRESS_MATIC_TESTNET = '0x7a0038987Ca18b07B92E13d8717dEE21d0F0B840'
+
 export const poolsQuery = gql`
   query poolsQuery(
     $first: Int! = 1000
@@ -53,7 +55,16 @@ export const masterChefV1PairAddressesQuery = gql`
 `
 
 export const masterChefV1TotalAllocPointQuery = gql`
-  query masterChefV1TotalAllocPoint($id: String! = "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd") {
+  query masterChefV1TotalAllocPoint($id: String! = "${MASTERCHEF_ADDRESS_MATIC_TESTNET}") {
+    masterChef(id: $id) {
+      id
+      totalAllocPoint
+    }
+  }
+`
+
+export const masterChefV1TotalAllocPointQuery_Mumbai = gql`
+  query masterChefV1TotalAllocPoint($id: String! = "${MASTERCHEF_ADDRESS_MATIC_TESTNET}") {
     masterChef(id: $id) {
       id
       totalAllocPoint
@@ -62,7 +73,7 @@ export const masterChefV1TotalAllocPointQuery = gql`
 `
 
 export const masterChefV1SushiPerBlockQuery = gql`
-  query masterChefV1SushiPerBlock($id: String! = "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd") {
+  query masterChefV1SushiPerBlock($id: String! = "${MASTERCHEF_ADDRESS_MATIC_TESTNET}") {
     masterChef(id: $id) {
       id
       sushiPerBlock
