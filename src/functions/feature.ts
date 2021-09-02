@@ -39,7 +39,15 @@ const features = {
     Feature.MIGRATE,
     Feature.ANALYTICS,
   ],
-  [ChainId.MATIC_TESTNET]: [Feature.AMM, Feature.LIQUIDITY_MINING, Feature.STAKING],
+  // Swap, Farm, Staking, Lend & Borrow, Bento, Dashboard
+  [ChainId.MATIC_TESTNET]: [
+    Feature.AMM,
+    Feature.LIQUIDITY_MINING,
+    Feature.STAKING,
+    Feature.KASHI,
+    Feature.BENTOBOX,
+    Feature.ANALYTICS,
+  ],
   [ChainId.HARMONY]: [Feature.AMM, Feature.LIQUIDITY_MINING, Feature.ANALYTICS],
   [ChainId.HARMONY_TESTNET]: [Feature.AMM],
   [ChainId.AVALANCHE]: [Feature.AMM],
