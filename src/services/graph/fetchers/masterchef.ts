@@ -21,14 +21,14 @@ export const MINICHEF = {
   [ChainId.HARMONY]: 'sushiswap/harmony-minichef',
 }
 
-export const miniChef = async (query, chainId = ChainId.MAINNET, variables = undefined) =>
+export const miniChef = async (query, chainId = ChainId.MATIC_TESTNET, variables = undefined) =>
   request(`${GRAPH_HOST[chainId]}/subgraphs/name/${MINICHEF[chainId]}`, query, variables)
 
 export const MASTERCHEF_V2 = {
   [ChainId.MAINNET]: 'sushiswap/master-chefv2',
 }
 
-export const masterChefV2 = async (query, chainId = ChainId.MAINNET, variables = undefined) =>
+export const masterChefV2 = async (query, chainId = ChainId.MATIC_TESTNET, variables = undefined) =>
   request(`${GRAPH_HOST[chainId]}/subgraphs/name/${MASTERCHEF_V2[chainId]}`, query, variables)
 
 export const MASTERCHEF_V1 = {
@@ -36,7 +36,7 @@ export const MASTERCHEF_V1 = {
   [ChainId.MATIC_TESTNET]: 'midotrung/masterchefmumbai',
 }
 
-export const masterChefV1 = async (query, chainId = ChainId.MAINNET, variables = undefined) =>
+export const masterChefV1 = async (query, chainId = ChainId.MATIC_TESTNET, variables = undefined) =>
   request(`${GRAPH_HOST[chainId]}/subgraphs/name/${MASTERCHEF_V1[chainId]}`, query, variables)
 
 export const getMasterChefV1TotalAllocPoint = async () => {
@@ -54,7 +54,8 @@ export const getMasterChefV1SushiPerBlock = async () => {
 }
 
 export const getMasterChefV1Farms = async (variables = undefined) => {
-  const { pools } = await masterChefV1(poolsQuery, undefined, variables)
+  const { pools } = await masterChefV1(poolsQuery, undefined, {})
+  console.log('getMasterChefV1Farms - pools:', pools)
   return pools
 }
 
@@ -83,12 +84,12 @@ export const getMasterChefV2PairAddreses = async () => {
   return pools
 }
 
-export const getMiniChefFarms = async (chainId = ChainId.MAINNET, variables = undefined) => {
+export const getMiniChefFarms = async (chainId = ChainId.MATIC_TESTNET, variables = undefined) => {
   const { pools } = await miniChef(miniChefPoolsQuery, chainId, variables)
   return pools
 }
 
-export const getMiniChefPairAddreses = async (chainId = ChainId.MAINNET) => {
+export const getMiniChefPairAddreses = async (chainId = ChainId.MATIC_TESTNET) => {
   console.debug('getMiniChefPairAddreses')
   const { pools } = await miniChef(miniChefPairAddressesQuery, chainId)
   return pools

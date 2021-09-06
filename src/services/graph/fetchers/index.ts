@@ -3,12 +3,17 @@ import { request } from 'graphql-request'
 export async function pager(endpoint, query, variables = {}) {
   if (endpoint.includes('undefined')) return {}
 
+  console.log('pager - endpoint:', endpoint)
+  console.log('pager - query:', query)
+  console.log('pager - variables:', variables)
+
   let data: any = {}
   let skip = 0
   let flag = true
   while (flag) {
     flag = false
     const req = await request(endpoint, query, variables)
+    console.log('pager - req:', req)
     Object.keys(req).forEach((key) => {
       data[key] = data[key] ? [...data[key], ...req[key]] : req[key]
     })
@@ -22,6 +27,7 @@ export async function pager(endpoint, query, variables = {}) {
     skip += 1000
     variables = { ...variables, skip }
   }
+  console.log('pager - data:', data)
   return data
 }
 

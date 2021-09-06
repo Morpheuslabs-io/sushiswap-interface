@@ -44,12 +44,14 @@ export default function Farm(): JSX.Element {
   const type = router.query.filter == null ? 'all' : (router.query.filter as string)
 
   const pairAddresses = useFarmPairAddresses()
+  console.log('pairAddresses:', pairAddresses)
 
   const swapPairs = useSushiPairs({
-    where: {
-      id_in: pairAddresses,
-    },
+    // where: {
+    //   id_in: pairAddresses,
+    // },
   })
+  console.log('swapPairs:', swapPairs)
 
   const kashiPairs = useKashiPairs({
     where: {
@@ -58,6 +60,7 @@ export default function Farm(): JSX.Element {
   })
 
   const farms = useFarms()
+  console.log('farms:', farms)
 
   const positions = usePositions()
 
@@ -258,7 +261,7 @@ export default function Farm(): JSX.Element {
     threshold: 0.4,
   }
 
-  // console.log({ data })
+  console.log('farm data:', data)
 
   const { result, term, search } = useFuse({
     data,

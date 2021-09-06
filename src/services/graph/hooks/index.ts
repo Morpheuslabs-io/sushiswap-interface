@@ -22,7 +22,7 @@ export * from './exchange'
 
 export function useMasterChefV1TotalAllocPoint(swrConfig = undefined) {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && [ChainId.MAINNET, ChainId.MATIC_TESTNET].includes(chainId)
   const { data } = useSWR(
     shouldFetch ? 'masterChefV1TotalAllocPoint' : null,
     () => getMasterChefV1TotalAllocPoint(),
@@ -33,7 +33,7 @@ export function useMasterChefV1TotalAllocPoint(swrConfig = undefined) {
 
 export function useMasterChefV1SushiPerBlock(swrConfig = undefined) {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && [ChainId.MAINNET, ChainId.MATIC_TESTNET].includes(chainId)
   const { data } = useSWR(
     shouldFetch ? 'masterChefV1SushiPerBlock' : null,
     () => getMasterChefV1SushiPerBlock(),
@@ -44,7 +44,8 @@ export function useMasterChefV1SushiPerBlock(swrConfig = undefined) {
 
 export function useMasterChefV1Farms(variables = undefined, chainId = undefined, swrConfig = undefined) {
   chainId = chainId ?? useActiveWeb3React().chainId
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  console.log('useMasterChefV1Farms - chainId:', chainId)
+  const shouldFetch = chainId && [ChainId.MAINNET, ChainId.MATIC_TESTNET].includes(chainId)
   const { data } = useSWR(
     shouldFetch ? ['masterChefV1Farms', JSON.stringify(variables)] : null,
     () => getMasterChefV1Farms(variables),
@@ -62,7 +63,7 @@ export function useMasterChefV2Farms(
   swrConfig: SWRConfiguration = undefined
 ) {
   chainId = chainId ?? useActiveWeb3React().chainId
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && [ChainId.MAINNET, ChainId.MATIC_TESTNET].includes(chainId)
   const { data } = useSWR(shouldFetch ? 'masterChefV2Farms' : null, () => getMasterChefV2Farms(), swrConfig)
   return useMemo(() => {
     if (!data) return []
@@ -88,9 +89,9 @@ export function useFarms(variables = undefined, chainId = undefined, swrConfig: 
   const masterChefV1Farms = useMasterChefV1Farms(variables, chainId)
   const masterChefV2Farms = useMasterChefV2Farms(variables, chainId)
   const miniChefFarms = useMiniChefFarms(variables, chainId)
-  // useEffect(() => {
-  //   console.log('debug', { masterChefV1Farms, masterChefV2Farms, miniChefFarms })
-  // }, [masterChefV1Farms, masterChefV2Farms, miniChefFarms])
+  useEffect(() => {
+    console.log('debug', { masterChefV1Farms, masterChefV2Farms, miniChefFarms })
+  }, [masterChefV1Farms, masterChefV2Farms, miniChefFarms])
   return useMemo(
     () => concat(masterChefV1Farms, masterChefV2Farms, miniChefFarms).filter((pool) => pool && pool.pair),
     [masterChefV1Farms, masterChefV2Farms, miniChefFarms]
@@ -99,10 +100,11 @@ export function useFarms(variables = undefined, chainId = undefined, swrConfig: 
 
 export function useMasterChefV1PairAddresses() {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && [ChainId.MAINNET, ChainId.MATIC_TESTNET].includes(chainId)
   const { data } = useSWR(shouldFetch ? ['masterChefV1PairAddresses', chainId] : null, (_) =>
     getMasterChefV1PairAddreses()
   )
+  console.log('useMasterChefV1PairAddresses - data:', data)
   return useMemo(() => {
     if (!data) return []
     return data.map((data) => data.pair)
@@ -111,7 +113,7 @@ export function useMasterChefV1PairAddresses() {
 
 export function useMasterChefV2PairAddresses() {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && [ChainId.MAINNET, ChainId.MATIC_TESTNET].includes(chainId)
   const { data } = useSWR(shouldFetch ? ['masterChefV2PairAddresses', chainId] : null, (_) =>
     getMasterChefV2PairAddreses()
   )
@@ -123,7 +125,7 @@ export function useMasterChefV2PairAddresses() {
 
 export function useMiniChefPairAddresses() {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && [ChainId.MATIC, ChainId.XDAI, ChainId.HARMONY].includes(chainId)
+  const shouldFetch = chainId && [ChainId.MATIC, ChainId.MATIC_TESTNET, ChainId.XDAI, ChainId.HARMONY].includes(chainId)
   const { data } = useSWR(shouldFetch ? ['miniChefPairAddresses', chainId] : null, (_, chainId) =>
     getMiniChefPairAddreses(chainId)
   )
@@ -137,6 +139,8 @@ export function useFarmPairAddresses() {
   const masterChefV1PairAddresses = useMasterChefV1PairAddresses()
   const masterChefV2PairAddresses = useMasterChefV2PairAddresses()
   const miniChefPairAddresses = useMiniChefPairAddresses()
+
+  console.log('useFarmPairAddresses - masterChefV1PairAddresses:', masterChefV1PairAddresses)
   return useMemo(
     () => concat(masterChefV1PairAddresses, masterChefV2PairAddresses, miniChefPairAddresses),
     [masterChefV1PairAddresses, masterChefV2PairAddresses, miniChefPairAddresses]
