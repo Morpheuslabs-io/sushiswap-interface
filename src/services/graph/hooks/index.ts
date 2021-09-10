@@ -73,7 +73,7 @@ export function useMasterChefV2Farms(
 
 export function useMiniChefFarms(variables = undefined, chainId = undefined, swrConfig: SWRConfiguration = undefined) {
   chainId = chainId ?? useActiveWeb3React().chainId
-  const shouldFetch = chainId && [ChainId.MATIC, ChainId.XDAI, ChainId.HARMONY].includes(chainId)
+  const shouldFetch = chainId && [ChainId.MATIC, ChainId.MATIC_TESTNET, ChainId.XDAI, ChainId.HARMONY].includes(chainId)
   const { data } = useSWR(
     shouldFetch ? ['miniChefFarms', chainId] : null,
     (_, chainId) => getMiniChefFarms(chainId),
