@@ -47,9 +47,9 @@ export default function Farm(): JSX.Element {
   console.log('pairAddresses:', pairAddresses)
 
   const swapPairs = useSushiPairs({
-    // where: {
-    //   id_in: pairAddresses,
-    // },
+    where: {
+      id_in: pairAddresses,
+    },
   })
   console.log('swapPairs:', swapPairs)
 

@@ -18,61 +18,52 @@ import { GRAPH_HOST } from '../constants'
 import { pager } from './'
 
 export const EXCHANGE = {
-  // [ChainId.MAINNET]: 'sushiswap/exchange',
-  // [ChainId.XDAI]: 'sushiswap/xdai-exchange',
-  // [ChainId.MATIC]: 'sushiswap/matic-exchange',
+  [ChainId.MAINNET]: 'sushiswap/exchange',
+  [ChainId.XDAI]: 'sushiswap/xdai-exchange',
+  [ChainId.MATIC]: 'sushiswap/matic-exchange',
   [ChainId.MATIC_TESTNET]: 'midotrung/mumbaiexchange',
-  // [ChainId.FANTOM]: 'sushiswap/fantom-exchange',
-  // [ChainId.BSC]: 'sushiswap/bsc-exchange',
-  // [ChainId.HARMONY]: 'sushiswap/harmony-exchange',
-  // [ChainId.OKEX]: 'sushiswap/okex-exchange',
-  // [ChainId.AVALANCHE]: 'sushiswap/avalanche-exchange',
-  // [ChainId.CELO]: 'sushiswap/celo-exchange',
+  [ChainId.FANTOM]: 'sushiswap/fantom-exchange',
+  [ChainId.BSC]: 'sushiswap/bsc-exchange',
+  [ChainId.HARMONY]: 'sushiswap/harmony-exchange',
+  [ChainId.OKEX]: 'sushiswap/okex-exchange',
+  [ChainId.AVALANCHE]: 'sushiswap/avalanche-exchange',
+  [ChainId.CELO]: 'sushiswap/celo-exchange',
 }
 
 export const exchange = async (chainId = ChainId.MAINNET, query, variables = {}) =>
   pager(`${GRAPH_HOST[chainId]}/subgraphs/name/${EXCHANGE[chainId]}`, query, variables)
 
 export const getPairs = async (chainId = ChainId.MAINNET, variables = undefined, query = pairsQuery) => {
-  console.log('exchange - getPairs - variables:', variables)
   const { pairs } = await exchange(chainId, query, variables)
-  console.log('exchange - getPairs - chainId:', chainId)
-  console.log('exchange - getPairs:', pairs)
   return pairs
 }
 
 export const getTokenSubset = async (chainId = ChainId.MAINNET, variables) => {
-  // console.log('getTokenSubset')
   const { tokens } = await exchange(chainId, tokenSubsetQuery, variables)
   return tokens
 }
 
 export const getTokens = async (chainId = ChainId.MAINNET, query = tokensQuery, variables) => {
-  // console.log('getTokens')
   const { tokens } = await exchange(chainId, query, variables)
   return tokens
 }
 
 export const getToken = async (chainId = ChainId.MAINNET, query = tokenQuery, variables) => {
-  // console.log('getTokens')
   const { token } = await exchange(chainId, query, variables)
   return token
 }
 
 export const getTokenDayData = async (chainId = ChainId.MAINNET, query = tokenDayDatasQuery, variables) => {
-  // console.log('getTokens')
   const { tokenDayDatas } = await exchange(chainId, query, variables)
   return tokenDayDatas
 }
 
 export const getTokenPrices = async (chainId = ChainId.MAINNET, variables) => {
-  // console.log('getTokenPrice')
   const { tokens } = await exchange(chainId, tokensQuery, variables)
   return tokens.map((token) => token?.derivedETH)
 }
 
 export const getTokenPrice = async (chainId = ChainId.MAINNET, query, variables) => {
-  // console.log('getTokenPrice')
   const nativePrice = await getNativePrice(chainId)
 
   const { token } = await exchange(chainId, query, variables)

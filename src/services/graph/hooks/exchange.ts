@@ -216,10 +216,9 @@ export function useSushiPairs(
   const shouldFetch = chainId
   const { data } = useSWR(
     shouldFetch ? ['sushiPairs', chainId, JSON.stringify(variables)] : null,
-    (_, chainId) => getPairs(chainId, {}, query),
+    (_, chainId) => getPairs(chainId, variables, query),
     swrConfig
   )
-  console.log('useSushiPairs - data:', data)
   return data
 }
 
