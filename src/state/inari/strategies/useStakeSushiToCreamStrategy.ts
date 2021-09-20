@@ -85,14 +85,14 @@ const useStakeSushiToCreamStrategy = (): StrategyHook => {
     if (!zenkoContract || !balances) return
 
     const main = async () => {
-      if (!balances[CRXSUSHI.address]) return tryParseAmount('0', XSUSHI)
+      if (!balances[CRXSUSHI.address]) return tryParseAmount('0', XSUSHI[ChainId.MAINNET])
       const bal = await zenkoContract.fromCtoken(
         CRXSUSHI.address,
         balances[CRXSUSHI.address].toFixed().toBigNumber(CRXSUSHI.decimals).toString()
       )
       setBalances({
         inputTokenBalance: balances[SUSHI[ChainId.MAINNET].address],
-        outputTokenBalance: CurrencyAmount.fromRawAmount(XSUSHI, bal.toString()),
+        outputTokenBalance: CurrencyAmount.fromRawAmount(XSUSHI[ChainId.MAINNET], bal.toString()),
       })
     }
 

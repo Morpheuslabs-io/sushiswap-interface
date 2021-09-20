@@ -39,7 +39,7 @@ const CurrencyInputPanel: FC<CurrencyInputPanelProps> = ({ field, meowshiState, 
                 src={
                   currency === SUSHI[ChainId.MAINNET]
                     ? '/images/tokens/sushi-square.jpg'
-                    : currency === XSUSHI
+                    : currency === XSUSHI[ChainId.MAINNET]
                     ? '/images/tokens/xsushi-square.jpg'
                     : '/images/tokens/nyan-square.jpg'
                 }
@@ -53,11 +53,16 @@ const CurrencyInputPanel: FC<CurrencyInputPanelProps> = ({ field, meowshiState, 
                 <Typography variant="h3" className="text-high-emphesis leading-6" weight={700}>
                   {currency?.symbol}
                 </Typography>
-                {(currency === SUSHI[ChainId.MAINNET] || currency === XSUSHI) && (
+                {(currency === SUSHI[ChainId.MAINNET] || currency === XSUSHI[ChainId.MAINNET]) && (
                   <Typography
                     variant="xs"
                     className="underline text-blue cursor-pointer"
-                    onClick={() => setCurrency(currency === XSUSHI ? SUSHI[ChainId.MAINNET] : XSUSHI, field)}
+                    onClick={() =>
+                      setCurrency(
+                        currency === XSUSHI[ChainId.MAINNET] ? SUSHI[ChainId.MAINNET] : XSUSHI[ChainId.MAINNET],
+                        field
+                      )
+                    }
                   >
                     {currencies[field] === SUSHI[ChainId.MAINNET] ? i18n._(t`Use xSUSHI`) : i18n._(t`Use SUSHI`)}
                   </Typography>

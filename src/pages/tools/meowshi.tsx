@@ -58,11 +58,11 @@ export default function Meowshi() {
     async (val, field) => {
       setFields((prevState) => {
         const inputRate =
-          currencies[Field.INPUT] === XSUSHI
+          currencies[Field.INPUT] === XSUSHI[ChainId.MAINNET]
             ? meowshiPerXSushi.mul(e10(5))
             : meowshiPerXSushi.mul(e10(5)).mulDiv(e10(18), sushiPerXSushi.toString().toBigNumber(18))
         const outputRate =
-          currencies[Field.OUTPUT] === XSUSHI
+          currencies[Field.OUTPUT] === XSUSHI[ChainId.MAINNET]
             ? xSushiPerMeowshi.div(e10(5))
             : xSushiPerMeowshi.mulDiv(sushiPerXSushi.toString().toBigNumber(18), e10(18)).div(e10(5))
 

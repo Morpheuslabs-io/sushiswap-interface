@@ -61,7 +61,7 @@ export default function Stake() {
   const { i18n } = useLingui()
   const { account, chainId } = useActiveWeb3React()
   const sushiBalance = useTokenBalance(account ?? undefined, SUSHI[chainId])
-  const xSushiBalance = useTokenBalance(account ?? undefined, XSUSHI)
+  const xSushiBalance = useTokenBalance(account ?? undefined, XSUSHI[chainId])
 
   const sushiPrice = useSushiPrice()
 

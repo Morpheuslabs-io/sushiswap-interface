@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { ChainId } from '@sushiswap/sdk'
 
 import { BigNumber } from 'ethers'
 import { XSUSHI } from '../constants'
@@ -11,8 +12,16 @@ export default function useMeowshiPerXSushi() {
   useEffect(() => {
     if (!bentoboxContract) return
     ;(async () => {
-      const toShare = await bentoboxContract.toShare(XSUSHI.address, '1'.toBigNumber(XSUSHI.decimals), false)
-      const toAmount = await bentoboxContract.toAmount(XSUSHI.address, '1'.toBigNumber(XSUSHI.decimals), false)
+      const toShare = await bentoboxContract.toShare(
+        XSUSHI[ChainId.MAINNET].address,
+        '1'.toBigNumber(XSUSHI[ChainId.MAINNET].decimals),
+        false
+      )
+      const toAmount = await bentoboxContract.toAmount(
+        XSUSHI[ChainId.MAINNET].address,
+        '1'.toBigNumber(XSUSHI[ChainId.MAINNET].decimals),
+        false
+      )
       setState([toShare, toAmount])
     })()
   }, [bentoboxContract])
