@@ -61,11 +61,12 @@ export default function useFarmRewards() {
 
     function getRewards() {
       // TODO: Some subgraphs give sushiPerBlock & sushiPerSecond, and mcv2 gives nothing
-      const sushiPerBlock =
-        pool?.owner?.sushiPerBlock / 1e18 ||
-        (pool?.owner?.sushiPerSecond / 1e18) * averageBlockTime ||
-        masterChefV1SushiPerBlock
-
+      const sushiPerBlock = pool?.owner?.sushiPerBlock
+        ? pool?.owner?.sushiPerBlock / 1e18
+        : pool?.owner?.sushiPerSecond
+        ? (pool?.owner?.sushiPerSecond / 1e18) * averageBlockTime
+        : masterChefV1SushiPerBlock
+      debugger
       const rewardPerBlock = (pool.allocPoint / pool.owner.totalAllocPoint) * sushiPerBlock
 
       const defaultReward = {
@@ -120,6 +121,11 @@ export default function useFarmRewards() {
 
         const reward = {
           [ChainId.MATIC]: {
+            token: 'MATIC',
+            icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/polygon.jpg',
+            rewardPrice: maticPrice,
+          },
+          [ChainId.MATIC_TESTNET]: {
             token: 'MATIC',
             icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/polygon.jpg',
             rewardPrice: maticPrice,
