@@ -115,7 +115,7 @@ function AppBar(): JSX.Element {
                   <div className="flex items-center justify-between w-full space-x-2 sm:justify-end">
                     {chainId && [ChainId.MAINNET].includes(chainId) && library && library.provider.isMetaMask && (
                       <>
-                        <QuestionHelper text={i18n._(t`Add xSUSHI to your MetaMask wallet`)}>
+                        <QuestionHelper text={i18n._(t`Add xABC to your MetaMask wallet`)}>
                           <div
                             className="hidden p-0.5 rounded-md cursor-pointer sm:inline-flex bg-dark-900 hover:bg-dark-800"
                             onClick={() => {
@@ -161,7 +161,7 @@ function AppBar(): JSX.Element {
 
                     {chainId && chainId in SUSHI_ADDRESS && library && library.provider.isMetaMask && (
                       <>
-                        <QuestionHelper text={i18n._(t`Add SUSHI to your MetaMask wallet`)}>
+                        <QuestionHelper text={i18n._(t`Add ABC to your MetaMask wallet`)}>
                           <div
                             className="hidden rounded-md cursor-pointer sm:inline-flex bg-dark-900 hover:bg-dark-800 p-0.5"
                             onClick={() => {
@@ -169,10 +169,9 @@ function AppBar(): JSX.Element {
                                 type: 'ERC20',
                                 options: {
                                   address: SUSHI_ADDRESS[chainId],
-                                  symbol: 'SUSHI',
+                                  symbol: 'ABC',
                                   decimals: 18,
-                                  image:
-                                    'https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png',
+                                  image: 'https://s2.coinmarketcap.com/static/img/coins/64x64/2709.png',
                                 },
                               }
                               if (library && library.provider.isMetaMask && library.provider.request) {
@@ -183,7 +182,7 @@ function AppBar(): JSX.Element {
                                   })
                                   .then((success) => {
                                     if (success) {
-                                      console.log('Successfully added SUSHI to MetaMask')
+                                      console.log('Successfully added ABC to MetaMask')
                                     } else {
                                       throw new Error('Something went wrong.')
                                     }
@@ -193,10 +192,10 @@ function AppBar(): JSX.Element {
                             }}
                           >
                             <Image
-                              src="/images/tokens/sushi-square.jpg"
-                              alt="SUSHI"
-                              width="38px"
-                              height="38px"
+                              src="/logo.png"
+                              alt="ABC"
+                              width="28px"
+                              height="28px"
                               objectFit="contain"
                               className="rounded-md"
                             />
