@@ -112,8 +112,8 @@ export default function Farm(): JSX.Element {
       const rewardPerBlock = (pool.allocPoint / pool.owner.totalAllocPoint) * sushiPerBlock
 
       const defaultReward = {
-        token: 'SUSHI',
-        icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/sushi.jpg',
+        token: 'ABC',
+        icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/2709.png',
         rewardPerBlock,
         rewardPerDay: rewardPerBlock * blocksPerDay,
         rewardPrice: sushiPrice,

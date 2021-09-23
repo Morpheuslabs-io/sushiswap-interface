@@ -173,13 +173,7 @@ export const WBTC = new Token(ChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C
 // export const XSUSHI = new Token(ChainId.MAINNET, '0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272', 18, 'xSUSHI', 'SushiBar')
 export const XSUSHI: ChainTokenMap = {
   [ChainId.MAINNET]: new Token(ChainId.MAINNET, BAR_ADDRESS[ChainId.MAINNET], 18, 'xSUSHI', 'SushiBar'),
-  [ChainId.MATIC_TESTNET]: new Token(
-    ChainId.MATIC_TESTNET,
-    BAR_ADDRESS[ChainId.MATIC_TESTNET],
-    18,
-    'xSUSHI',
-    'SushiBar'
-  ),
+  [ChainId.MATIC_TESTNET]: new Token(ChainId.MATIC_TESTNET, BAR_ADDRESS[ChainId.MATIC_TESTNET], 18, 'xABC', 'AbcBar'),
 }
 
 export const LIFT = new Token(ChainId.MAINNET, '0xf9209d900f7ad1DC45376a2caA61c78f6dEA53B6', 18, 'LIFT', 'LiftKitchen')
@@ -226,8 +220,8 @@ export const SUSHI: ChainTokenMap = {
     ChainId.MATIC_TESTNET,
     SUSHI_ADDRESS[ChainId.MATIC_TESTNET],
     18,
-    'SUSHI',
-    'SushiToken'
+    'ABC',
+    'AbcToken'
   ),
   [ChainId.FANTOM]: new Token(ChainId.FANTOM, SUSHI_ADDRESS[ChainId.FANTOM], 18, 'SUSHI', 'SushiToken'),
   [ChainId.XDAI]: new Token(ChainId.XDAI, SUSHI_ADDRESS[ChainId.XDAI], 18, 'SUSHI', 'SushiToken'),
