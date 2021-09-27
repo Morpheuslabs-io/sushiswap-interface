@@ -205,7 +205,8 @@ export default function Farm(): JSX.Element {
     const balance = swapPair ? Number(pool.balance / 1e18) : pool.balance / 10 ** kashiPair.token0.decimals
 
     const tvl = swapPair
-      ? (balance / Number(swapPair.totalSupply)) * Number(swapPair.reserveUSD)
+      ? (balance / Number(swapPair.totalSupply)) *
+        Number(swapPair.reserveUSD > 0 ? swapPair.reserveUSD : +swapPair.reserveETH * ethPrice)
       : balance * kashiPair.token0.derivedETH * ethPrice
 
     const roiPerBlock =
