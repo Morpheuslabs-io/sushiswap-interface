@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-const MASTERCHEF_ADDRESS_MATIC_TESTNET = '0x5F02D5a73260a790BC7f981e3f8F0AaF1F879165'
+const MASTERCHEF_ADDRESS_MATIC_TESTNET = '0xE34E84Be518108E1eA7065A3378cBf24f3e5992C'
 
 export const poolsQuery = gql`
   query poolsQuery(

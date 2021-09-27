@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export const factoryQuery = gql`
-  query factoryQuery($id: String! = "0x3e68BB4559CD8De3e3BDCdF22BFe97043b87984a", $block: Block_height) {
+  query factoryQuery($id: String! = "0x9D5Ef693998878051Ef01384Bf1270eE5b0404C8", $block: Block_height) {
     factory(id: $id, block: $block) {
       id
       volumeUSD
